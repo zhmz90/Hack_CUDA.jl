@@ -23,7 +23,8 @@ int main(void)
     int devID = 1;
     cudaDeviceProp props;
 
-    cudaGetDevice(&devID);
+    cudaGetDevice(devID);
+    cudaSetDevice(devID);
     cudaGetDeviceProperties(&props,devID);
     
     printf("Device %d: %s, %d.%d\n",devID,props.name,props.major,props.minor);
