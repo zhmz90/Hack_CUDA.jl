@@ -8,38 +8,18 @@
 
 
 
-__global__ void matrixMulCUDA(float *C, float *A, float *B, int m, int n, int p)
+__global__ void matrixMulCUDA(float *C, float *A, float *B, int wA, int wB)
 {
-
-    int row = blockIdx.y*blockDim.y + threadIdx.y;
-    int col = blockIdx.x*blockDim.x + threadIdx.x;
-
     int bx = blockIdx.x;
     int by = blockIdx.y;
-
+    
     int tx = threadIdx.x;
     int ty = threadIdx.y;
 
-    int title_width = blockDim.y;
-    int title_height = blockDim.x;
-
-    int s = 0;
-    int num_titles = ceil(n/blockIdx.y);
-
-
-    for (int i=0;i<num_titles;i++)
-    {
-        __shared__ float A_s[blockDim.x][blockDim.x];
-        __shared__ float B_s[blockDim.x][blockDim.y];
- 
-        A_s[tx][i] = A[tx][i];
-        B_s[i][ty] = B[i][ty];
+    int aBegin = wA * 
     
-        __syncthreads();
 
 
-
-    }
 
 }
 
