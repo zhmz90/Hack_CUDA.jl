@@ -15,6 +15,16 @@ void func_master()
     char *name = "function master";
     printf("%s\n", name);
     
+    int *data;
+    int num = 3;
+    data = (int *)malloc(sizeof(int)*num);
+    
+    for (int i=0; i<num;i++)
+    {
+        data[i] = i;
+    }
+
+    free(data);
     func_slave();
 }
 
